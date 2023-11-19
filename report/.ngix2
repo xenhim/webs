@@ -1,0 +1,106 @@
+server {
+    error_page 400 https://xemtruyen.xyz/truyenqq/;
+    error_page 401 https://xemtruyen.xyz/truyenqq/;
+    error_page 403 https://xemtruyen.xyz/truyenqq/;
+    error_page 404 https://xemtruyen.xyz/truyenqq/;
+    error_page 500 https://xemtruyen.xyz/truyenqq/;
+	
+    if ($query_string ~ "^category=(.*)&notcategory=(.*)&country=(.*)&status=(.*)&minchapter=(.*)&sort=(.*)") {
+        rewrite "^tim-kiem-nang-cao/(.*).html$" page/find.php?page=$1&category=%1&notcategory=%2&country=%3&status=%4&minchapter=%5&sort=%6 last;
+    }
+    if ($query_string ~ "^category=(.*)&notcategory=(.*)&country=(.*)&status=(.*)&minchapter=(.*)&sort=(.*)") {
+        rewrite "^tim-kiem-nang-cao.html$" page/find.php?category=%1&notcategory=%2&country=%3&status=%4&minchapter=%5&sort=%6 last;
+    }
+    if ($query_string ~ "^country=(.*)&status=(.*)&sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1&status=%2&sort=%3 last;
+    }
+    if ($query_string ~ "^country=(.*)&status=(.*)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1&status=%2 last;
+    }
+    if ($query_string ~ "^country=(.*)&sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1&sort=%2 last;
+    }
+    if ($query_string ~ "^status=(.*)&sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&status=%1&sort=%2 last;
+    }
+    if ($query_string ~ "^country=(.*)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1 last;
+    }
+    if ($query_string ~ "^status=(\d+)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&status=%1 last;
+    }
+    if ($query_string ~ "^sort=(\d+)") {
+        rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&sort=%1 last;
+    }
+    if ($query_string ~ "^status=(.*)") {
+        rewrite "^tac-gia/(.*)-(.*)/(.*).html$" page/author.php?name=$1&IdAuthor=$2&page=$3&status=%1 last;
+    }
+    if ($query_string ~ "^country=(.*)&status=(.*)&sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1&status=%2&sort=%3 last;
+    }
+    if ($query_string ~ "^country=(.*)&status=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1&status=%2 last;
+    }
+    if ($query_string ~ "^country=(.*)&sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1&sort=%2 last;
+    }
+    if ($query_string ~ "^status=(.*)&sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&status=%1&sort=%2 last;
+    }
+    if ($query_string ~ "^country=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1 last;
+    }
+    if ($query_string ~ "^status=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&status=%1 last;
+    }
+    if ($query_string ~ "^sort=(.*)") {
+        rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&sort=%1 last;
+    }
+    if ($query_string ~ "^status=(.*)") {
+        rewrite "^tac-gia/(.*)-(.*).html$" page/author.php?name=$1&IdAuthor=$2&status=%1 last;
+    }
+    if ($query_string ~ "^country=(.*)&status=(.*)") {
+        rewrite "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2&country=%1&status=%2 last;
+    }
+    if ($query_string ~ "^country=(.*)") {
+        rewrite "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2&country=%1 last;
+    }
+    if ($query_string ~ "^status=(.*)") {
+        rewrite "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2&status=%1 last;
+    }
+    if ($query_string ~ "^country=(.*)&status=(.*)") {
+        rewrite "^(.*).html$" page/sort.php?sort=$1&country=%1&status=%2 last;
+    }
+    if ($query_string ~ "^country=(.*)") {
+        rewrite "^(.*).html$" page/sort.php?sort=$1&country=%1 last;
+    }
+    if ($query_string ~ "^status=(.*)") {
+        rewrite "^(.*).html$" page/sort.php?sort=$1&status=%1 last;
+    }
+    rewrite "^truyen-tranh/(.*)-(.*)-chap-(.*).html$" page/chap.php?Name=$1&IdStory=$2&IdChapter=$3 last;
+    rewrite "^truyen-tranh/(.*)-(.*)$" page/detail.php?Name=$1&IdStory=$2 last;
+    if ($query_string ~ "^q=(.*)") {
+        rewrite "^tim-kiem/(.*).html$" page/search.php?page=$1&q=%1 last;
+    }
+    if ($query_string ~ "^q=(.*)") {
+        rewrite "^tim-kiem.html$" page/search.php?q=%1 last;
+    }
+    rewrite "^index.html$" index.php last;
+    rewrite "^lich-su/(.*).html$" page/history.php?page=$1 last;
+    rewrite "^lich-su.html$" page/history.php last;
+    rewrite "^truyen-dang-theo-doi/(.*).html$" page/follow.php?page=$1 last;
+    rewrite "^truyen-dang-theo-doi.html$" page/follow.php last;
+    rewrite "^tac-gia/(.*)-(.*)/(.*).html$" page/author.php?&name=$1&IdAuthor=$2&page=$3 last;
+    rewrite "^tac-gia/(.*)-(.*).html$" page/author.php?name=$1&IdAuthor=$2 last;
+    rewrite "^quan-ly-tai-khoan.html$" page/account.php last;
+    rewrite "^tin-nhan.html$" page/message.php last;
+    rewrite "^gui-tin-nhan.html$" page/send.php last;
+    rewrite "^gui-tin-nhan.html$" page/send.php last;
+    rewrite "^doi-mat-khau.html$" page/changePassword.php last;
+    rewrite "^tim-kiem-nang-cao.html$" page/find.php last;
+    rewrite "^tim-kiem-nang-cao/(.*).html$" page/find.php?page=$1 last;
+    rewrite "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3 last;
+    rewrite "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2 last;
+    rewrite "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2 last;
+    rewrite "^(.*).html$" page/sort.php?sort=$1 last;
+}

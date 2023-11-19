@@ -1,0 +1,52 @@
+@charset "UTF-8";
+  .chapter-control {
+  text-align:center;
+}
+
+.chapter-control div {
+  margin-top:10px;
+}
+
+.d-none {
+  display:none;
+}
+
+.genre-item {
+  cursor:pointer;
+}
+
+.icon-checkbox,
+.icon-cross,
+.icon-tick {
+  display:inline-block;
+  background:url(../images/icon-checkbox.png) no-repeat #fff;
+  cursor:pointer;
+  width:18px;
+  height:18px;
+  margin:0 5px;
+  -webkit-transition:all .2s;
+  -moz-transition:all .2s;
+  -o-transition:all .2s;
+  transition:all .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.15) inset;
+}
+
+.icon-checkbox {
+  background-position:0 -18px;
+}
+
+.icon-tick {
+  background-position:0 -36px;
+}
+
+.icon-cross {
+  background-position:0 0;
+}
+
+.custom-select {
+  width:100%;
+}
+
+.select-search {
+  display:block !important;
+}

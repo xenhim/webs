@@ -1,0 +1,152 @@
+
+RewriteEngine on
+
+<Files page>
+deny from all
+</Files>
+
+RewriteCond %{QUERY_STRING} ^category=(.*)&notcategory=(.*)&country=(.*)&status=(.*)&minchapter=(.*)&sort=(.*)
+RewriteRule "^tim-kiem-nang-cao/(.*).html$" page/find.php?page=$1&category=%1&notcategory=%2&country=%3&status=%4&minchapter=%5&sort=%6 [L]
+
+RewriteCond %{QUERY_STRING} ^category=(.*)&notcategory=(.*)&country=(.*)&status=(.*)&minchapter=(.*)&sort=(.*)
+RewriteRule "^tim-kiem-nang-cao.html$" page/find.php?category=%1&notcategory=%2&country=%3&status=%4&minchapter=%5&sort=%6 [L]
+
+
+
+RewriteCond %{QUERY_STRING} ^country=(.*)&status=(.*)&sort=(.*)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1&status=%2&sort=%3 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)&status=(.*)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1&status=%2 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)&sort=(.*)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1&sort=%2 [L]
+RewriteCond %{QUERY_STRING} ^status=(.*)&sort=(.*)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&status=%1&sort=%2 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&country=%1 [L]
+RewriteCond %{QUERY_STRING} ^status=(\d+)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&status=%1 [L]
+RewriteCond %{QUERY_STRING} ^sort=(\d+)
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3&sort=%1 [L]
+
+RewriteCond %{QUERY_STRING} ^status=(.*)
+RewriteRule "^tac-gia/(.*)-(.*)/(.*).html$" page/author.php?name=$1&IdAuthor=$2&page=$3&status=%1 [L]
+
+RewriteCond %{QUERY_STRING} ^country=(.*)&status=(.*)&sort=(.*)
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1&status=%2&sort=%3 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)&status=(.*) 
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1&status=%2 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)&sort=(.*) 
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1&sort=%2 [L]
+RewriteCond %{QUERY_STRING} ^status=(.*)&sort=(.*)
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&status=%1&sort=%2 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&country=%1 [L]
+RewriteCond %{QUERY_STRING} ^status=(.*)
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&status=%1 [L]
+RewriteCond %{QUERY_STRING} ^sort=(.*)
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2&sort=%1 [L]
+
+
+RewriteCond %{QUERY_STRING} ^status=(.*)
+RewriteRule "^tac-gia/(.*)-(.*).html$" page/author.php?name=$1&IdAuthor=$2&status=%1 [L]
+
+RewriteCond %{QUERY_STRING} ^country=(.*)&status=(.*)
+RewriteRule "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2&country=%1&status=%2 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)
+RewriteRule "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2&country=%1 [L]
+RewriteCond %{QUERY_STRING} ^status=(.*)
+RewriteRule "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2&status=%1 [L]
+
+RewriteCond %{QUERY_STRING} ^country=(.*)&status=(.*)
+RewriteRule "^(.*).html$" page/sort.php?sort=$1&country=%1&status=%2 [L]
+RewriteCond %{QUERY_STRING} ^country=(.*)
+RewriteRule "^(.*).html$" page/sort.php?sort=$1&country=%1 [L]
+RewriteCond %{QUERY_STRING} ^status=(.*)
+RewriteRule "^(.*).html$" page/sort.php?sort=$1&status=%1 [L]
+
+
+RewriteRule "^truyen-tranh/(.*)-(.*)-chap-(.*).html$" page/chapStory.php?Name=$1&IdStory=$2&IdChapter=$3 [L]
+RewriteRule "^truyen-tranh/(.*)-(.*)$" page/detail.php?Name=$1&IdStory=$2 [L]
+RewriteRule "^tieu-thuyet/(.*)-(.*)-chap-(.*).html$" page/chapNovel.php?Name=$1&IdStory=$2&IdChapter=$3 [L]
+RewriteRule "^tieu-thuyet/(.*)-(.*)$" page/detail1.php?Name=$1&IdStory=$2 [L]
+
+RewriteCond %{QUERY_STRING} ^q=(.*)
+RewriteRule "^tim-kiem/(.*).html$" page/search.php?page=$1&q=%1 [L]
+
+RewriteCond %{QUERY_STRING} ^q=(.*)
+RewriteRule "^tim-kiem.html$" page/search.php?q=%1 [L]
+
+
+RewriteCond %{QUERY_STRING} ^size=(.*)&data=(.*)
+RewriteRule "^wp-content/uploads/image.jpg$" server.php?size=%1&data=%2 [L]
+
+RewriteRule "^index.html$" index.php [L]
+
+RewriteRule "^lich-su/(.*).html$" page/history.php?page=$1 [L]
+RewriteRule "^lich-su.html$" page/history.php [L]
+RewriteRule "^rieng-tu.html$" page/Privacy.php [L]
+
+RewriteRule "^truyen-dang-theo-doi/(.*).html$" page/follow.php?page=$1 [L]
+RewriteRule "^truyen-dang-theo-doi.html$" page/follow.php [L]
+
+RewriteRule "^tac-gia/(.*)-(.*)/(.*).html$" page/author.php?&name=$1&IdAuthor=$2&page=$3 [L]
+RewriteRule "^tac-gia/(.*)-(.*).html$" page/author.php?name=$1&IdAuthor=$2 [L]
+
+RewriteRule "^quan-ly-tai-khoan.html$" page/account.php [L]
+#tin tuc
+RewriteRule "^tin-tuc.html$" page/news.php [L]
+RewriteRule "^tin-tuc/(.*).html$" page/news.php?page=$1 [L]
+RewriteRule "^tin-tuc-chi-tiet/(.*)-(.*).html$" page/newsChapter.php?name=$1&id=$2 [L]
+#end tin tuc
+RewriteRule "^tin-nhan.html$" page/message.php [L]
+RewriteRule "^gui-tin-nhan.html$" page/send.php [L]
+RewriteRule "^doi-mat-khau.html$" page/changePassword.php [L]
+RewriteRule "^tim-kiem-nang-cao.html$" page/find.php [L]
+RewriteRule "^tim-kiem-nang-cao/(.*).html$" page/find.php?page=$1 [L]
+RewriteRule "^the-loai/(.*)-(.*)/(.*).html$" page/genre.php?genre=$1&IdGenre=$2&page=$3 [L]
+RewriteRule "^the-loai/(.*)-(.*).html$" page/genre.php?genre=$1&IdGenre=$2 [L]
+RewriteRule "^(.*)/(.*).html$" page/sort.php?sort=$1&page=$2 [L]
+RewriteRule "^(.*).html$" page/sort.php?sort=$1 [L]
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On
+# HTML
+ExpiresByType text/html "access plus 2 days"
+</IfModule>
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On
+# My favicon
+ExpiresByType image/x-icon "access plus 1 year"
+# Images
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On
+# Javascript
+ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On
+# CSS
+ExpiresByType text/css "access plus 1 month"
+</IfModule>
+<IfModule mod_headers.c>
+# Set XSS Protection header
+Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+
+
+
+
+
+
+
+
+

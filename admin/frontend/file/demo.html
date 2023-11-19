@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery tagEditor Plugin</title>
+    <meta name="description" content="A lightweight and sophisticated tag editor for jQuery. Sortable, editable tags with cursor navigation, autocomplete, and callbacks.">
+    <link rel="shortcut icon" href="https://pixabay.com/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/yahoo/pure-release/v0.6.0/pure-min.css">
+
+    <link rel="stylesheet" href="jquery.tag-editor.css">
+</head>
+<body>
+   <div style="margin:0 0 1.2em"><textarea id="demo2"></textarea></div>
+	<button id="ccc">aaa</button>
+	
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+    <script src="jquery.caret.min.js"></script>
+    <script src="jquery.tag-editor.js"></script>
+    <script>
+        $(function() {
+            
+var k=['ActionScript', 'AppleScript', 'Asp', 'BASIC', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'Python', 'Ruby', 'Scala', 'Scheme'];
+           
+            $('#demo2').tagEditor({
+                autocomplete: { delay: 0, position: { collision: 'flip' }, source:k  },
+                forceLowercase: false,
+                placeholder: 'Programming languages ...'
+            });
+ 
+        });
+$(document).ready(function(){ 
+        $("#ccc").click(function(){
+			var Name=[];
+			var tags = $('#demo2').tagEditor('getTags')[0].tags;
+				for (i = 0; i < tags.length; i++) { 
+					Name.push(tags[i]);
+				}
+			console.log(Name);
+		});
+		});
+    </script>
+</body>
+</html>

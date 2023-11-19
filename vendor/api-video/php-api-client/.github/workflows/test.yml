@@ -1,0 +1,22 @@
+name: Run unit tests
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependancies
+        uses: php-actions/composer@v6
+        with:
+          php_version: 7.4
+      - name: PHPUnit tests
+        uses: php-actions/phpunit@v3
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          BASE_URI: https://sandbox.api.video
+        with:
+          args: tests
+          log_junit: junit.xml
+          version: 9.5
+          php_version: 7.4
+          configuration: phpunit.xml
